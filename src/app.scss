@@ -1,0 +1,59 @@
+$nav-font-color: white;
+// #ff6347
+
+// *, *::before, *::after {
+//   box-sizing: border-box;
+// }
+
+$theme-colors: (
+  // "primary":
+  // "secondary":
+  // "danger":
+  // "warning":
+  // "info":
+  // "dark":
+  "salad": #CDD957,
+  "catch": tomato,
+  "white": white,
+  "light": tomato,
+  "dark": white
+);
+
+// $theme-colors: () !default;
+// $theme-colors: map-merge(
+//   (
+//     'primary': teal,
+//     'secondary': teal,
+//     'success': teal,
+//     'info': teal,
+//     'warning': teal,
+//     'danger': teal,
+//     'light': teal,
+//     'dark': teal
+//   ),
+//   $theme-colors
+// );
+
+
+@import "~bootstrap/scss/bootstrap";
+
+.navbar-brand {
+  color: $nav-font-color;
+  font-weight: 700;
+}
+
+.nav-link {
+  color: $nav-font-color;
+}
+
+.btn-caught {
+  background-color: #6a61b9;
+  // background-color: #6347ff;
+  color: white;
+  &:disabled {
+    opacity: 100%;
+  }
+  &:hover {
+    color: white;
+  }
+}

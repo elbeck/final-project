@@ -1,0 +1,59 @@
+{
+  "name": "final-project",
+  "version": "1.0.0",
+  "description": "Pokedex App",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack --mode development",
+    "start": "webpack serve --mode development"
+  },
+  "author": "Elena Bekreneva <el.bekreneva@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.14.2",
+    "@babel/preset-env": "^7.14.2",
+    "@babel/preset-react": "^7.13.13",
+    "babel-eslint": "^10.1.0",
+    "babel-loader": "^8.2.2",
+    "copy-webpack-plugin": "^8.1.1",
+    "css-loader": "^5.2.4",
+    "eslint": "^7.26.0",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-plugin-babel": "^5.3.1",
+    "eslint-plugin-flowtype": "^5.7.2",
+    "eslint-plugin-import": "^2.23.1",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-webpack-plugin": "^2.5.2",
+    "file-loader": "^6.2.0",
+    "html-webpack-plugin": "^5.3.1",
+    "mini-css-extract-plugin": "^1.6.0",
+    "sass": "^1.32.13",
+    "sass-loader": "^11.1.1",
+    "webpack": "^5.37.0",
+    "webpack-cli": "^4.7.0",
+    "webpack-dev-server": "^3.11.2",
+    "webpack-notifier": "^1.13.0"
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "axios": "^0.21.1",
+    "bootstrap": "^4.6.0",
+    "parse-link-header": "^1.0.1",
+    "prop-types": "^15.7.2",
+    "react": "^17.0.2",
+    "react-bootstrap": "^1.6.0",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.4",
+    "react-router-bootstrap": "^0.25.0",
+    "react-router-dom": "^5.2.0",
+    "redux": "^4.1.0",
+    "redux-devtools-extension": "^2.13.9",
+    "redux-thunk": "^2.3.0"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  }
+}
