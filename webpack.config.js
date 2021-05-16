@@ -5,16 +5,17 @@ const path = require("path"); // connect embedded 'path' module
 //* Plug-ins
 const HTMLWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-// const CopyWebpackPlugin = require("copy-webpack-plugin");
 const ESLintPlugin = require("eslint-webpack-plugin");
 
+// CONSTANTS  ======================================================+++========================================
 const isProd = process.env.NODE_ENV === "production";
+const PORT = 4200;
 
 // CONFIG ======================================================+++============================================
 let conf = {
   entry: ["@babel/polyfill", "./src/index.js"],
   output: {
-    publicPath: "http://localhost:4200/",
+    publicPath: `http://localhost:${PORT}/`,
   },
   module: {
     rules: [
@@ -62,18 +63,10 @@ let conf = {
     new MiniCssExtractPlugin({
       filename: "styles.css",
     }),
-    // new CopyWebpackPlugin({
-    //   patterns: [
-    //     {
-    //       from: path.resolve(__dirname, "public"),
-    //       to: path.resolve(__dirname, "dist"),
-    //     },
-    //   ],
-    // }),
     new ESLintPlugin(),
   ],
   devServer: {
-    port: 4200,
+    port: PORT,
     open: "chrome",
     hot: true,
     historyApiFallback: true,
@@ -97,16 +90,17 @@ let conf = {
   },
   resolve: {
     alias: {
-      components: path.resolve(__dirname, "src/components"),
-      containers: path.resolve(__dirname, "src/containers"),
-      store: path.resolve(__dirname, "src/store"),
-      routeMap: path.resolve(__dirname, "src/routeMap"),
-      assets: path.resolve(__dirname, "src/assets"),
-      public: path.resolve(__dirname, "public"),
       src: path.resolve(__dirname, "src"),
+      public: path.resolve(__dirname, "public"),
+      pages: path.resolve(__dirname, "src/pages"),
+      components: path.resolve(__dirname, "src/components"),
+      store: path.resolve(__dirname, "src/store"),
+      api: path.resolve(__dirname, "src/api"),
+      helpers: path.resolve(__dirname, "src/helpers"),
+      "route-map": path.resolve(__dirname, "src/route-map"),
     },
   },
-  devtool: isProd ? false : "eval-cheap-module-source-map", // Source-map creating
+  devtool: isProd ? false : "eval-cheap-module-source-map",
 };
 
 module.exports = conf;

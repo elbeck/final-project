@@ -1,0 +1,11 @@
+{
+  "name": "json-server",
+  "version": "1.0.0",
+  "description": "Fake API",
+  "main": "index.js",
+  "scripts": {
+    "start": "json-server --watch db.json --port 3004"
+  },
+  "author": "Elena Bekreneva <el.bekreneva@gmail.com>",
+  "license": "ISC"
+}
