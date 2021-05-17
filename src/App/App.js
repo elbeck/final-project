@@ -9,7 +9,7 @@ function App() {
   return (
     <BrowserRouter>
       <CustomNavbar />
-      <Container style={{ paddingTop: "80px" }}>
+      <Container style={{ paddingTop: "5rem" }}>
         <Switch>
           <Route
             path={routeMap.home.path}

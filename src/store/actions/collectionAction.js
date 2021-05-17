@@ -40,18 +40,12 @@ export function fetchPokemonGroup() {
     try {
       dispatch(fetchPokemonGroupStart());
       const page = getState().collection.nextPage;
-      const {
-        data: pokemonGroup,
-        nextPage,
-        lastPage,
-        date,
-      } = await getCollection(page);
+      const { data: pokemonGroup, nextPage, date } = await getCollection(page);
 
       dispatch(
         fetchPokemonGroupSuccess({
           pokemonGroup,
           nextPage,
-          lastPage,
           catchDates: date,
         })
       );

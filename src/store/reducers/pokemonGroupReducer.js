@@ -9,7 +9,6 @@ const initialState = {
   pokemonGroup: [],
   catchDates: {},
   nextPage: 1,
-  hasMore: false,
   loading: false,
   error: false,
 };
@@ -20,17 +19,13 @@ function pokemonGroupReducer(state = initialState, action) {
       return { ...state, loading: true };
     }
     case FETCH_POKEMON_GROUP_SUCCESS: {
-      const { pokemonGroup, nextPage, lastPage, catchDates } = action.payload;
-
+      const { pokemonGroup, nextPage, catchDates } = action.payload;
       const newPokemonGroup = [...state.pokemonGroup, ...pokemonGroup];
-      let page = Number(nextPage) || state.nextPage;
-      let hasMore = lastPage ? Number(lastPage) >= Number(page) : state.hasMore;
       return {
         ...state,
         loading: false,
         pokemonGroup: newPokemonGroup,
-        nextPage: page,
-        hasMore,
+        nextPage: Number(nextPage),
         catchDates,
       };
     }
@@ -38,13 +33,11 @@ function pokemonGroupReducer(state = initialState, action) {
       return { ...state, loading: false, error: action.error };
     }
     case RESET_POKEMON_GROUP: {
-      console.log("reset pokemon group");
       return {
         ...state,
         pokemonGroup: [],
         catchDates: {},
         nextPage: 1,
-        hasMore: false,
         loading: false,
         error: false,
       };

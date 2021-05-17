@@ -4,10 +4,11 @@ import { connect } from "react-redux";
 import PokeCardDesk from "components/PokeCardDesk/PokeCardDesk";
 import { fetchPokemonGroup } from "store/actions/collectionAction";
 import { resetPokemonGroup } from "store/actions/pokemonGroupAction";
+import PropTypes from "prop-types";
 
 function CollectionPage(props) {
   useEffect(() => {
-    if (props.hasMore) {
+    if (props.nextPage > 1) {
       document.addEventListener("scroll", scrollHandle);
       return () => {
         document.removeEventListener("scroll", scrollHandle);
@@ -48,7 +49,7 @@ function CollectionPage(props) {
       )}
       {props.error && (
         <div className="m-4 text-center" style={{ fontSize: "1.5rem" }}>
-          {props.error.message}
+          Error
         </div>
       )}
     </React.Fragment>
@@ -60,7 +61,6 @@ function mapStateToProps(state) {
     pokemonGroup: state.collection.pokemonGroup,
     catchInfo: state.collection.catchDates,
     nextPage: state.collection.nextPage,
-    hasMore: state.collection.hasMore,
     loading: state.collection.loading,
     error: state.collection.error,
   };
@@ -72,5 +72,16 @@ function mapDispatchToProps(dispatch) {
     reset: () => dispatch(resetPokemonGroup()),
   };
 }
+
+CollectionPage.propTypes = {
+  pokemonGroup: PropTypes.arrayOf(PropTypes.object).isRequired,
+  catchInfo: PropTypes.object.isRequired,
+  handleBtnClick: PropTypes.func,
+  nextPage: PropTypes.number.isRequired,
+  loading: PropTypes.bool.isRequired,
+  error: PropTypes.oneOfType([PropTypes.bool, PropTypes.object]),
+  fetchPokemonGroup: PropTypes.func,
+  reset: PropTypes.func,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(CollectionPage);

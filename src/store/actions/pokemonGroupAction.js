@@ -42,13 +42,7 @@ export function fetchPokemonGroup() {
       dispatch(fetchPokemonGroupStart());
 
       const page = getState().pokemonGroup.nextPage;
-
-      const {
-        data: pokemonGroup,
-        nextPage,
-        lastPage,
-      } = await getPokemonGroup(page);
-
+      const { data: pokemonGroup, nextPage } = await getPokemonGroup(page);
       const rels = await getRels();
       const catchDates = rels.reduce((obj, rel) => {
         const pokemonId = Number(rel.pokemonsId);
@@ -60,7 +54,6 @@ export function fetchPokemonGroup() {
         fetchPokemonGroupSuccess({
           pokemonGroup,
           nextPage,
-          lastPage,
           catchDates,
         })
       );
@@ -71,7 +64,7 @@ export function fetchPokemonGroup() {
 }
 
 export function addToCollection(pokemonId, catchDate) {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     try {
       await addRel({ pokemonId, catchDate });
       const rels = await getRels();
@@ -81,9 +74,12 @@ export function addToCollection(pokemonId, catchDate) {
         return obj;
       }, {});
 
+      const nextPage = getState().pokemonGroup.nextPage;
+
       dispatch(
         fetchPokemonGroupSuccess({
           pokemonGroup: [],
+          nextPage,
           catchDates,
         })
       );

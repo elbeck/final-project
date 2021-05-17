@@ -12,8 +12,7 @@ export const getPokemonGroup = async (page) => {
     );
     const links = parseLinkHeader(response.headers.link);
     const nextPage = links?.next?._page;
-    const lastPage = links?.last?._page;
-    return { data: response.data, nextPage, lastPage };
+    return { data: response.data, nextPage };
   } catch (err) {
     throw new Error(err);
   }
