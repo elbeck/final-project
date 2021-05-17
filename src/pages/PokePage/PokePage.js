@@ -5,25 +5,25 @@ import { connect } from "react-redux";
 import PokeballLoader from "components/PokeballLoader/PokeballLoader";
 import PokeInfo from "components/PokeInfo/PokeInfo";
 import { fetchPokemonById } from "store/actions/pokemonAction";
-// import { useLocation } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 function PokePage(props) {
   // const location = useLocation();
   // const currentId = currentLocation.pathname.split('/'.pop())
+  const { id } = useParams();
   useEffect(() => {
-    const pokemonId = props.match.params.id;
-    props.fetchPokemonById(pokemonId);
+    props.fetchPokemonById(id);
     // eslint-disable-next-line
   }, []);
 
   return (
-    <Container className={`${styles.container} pt-4`}>
+    <React.Fragment>
       {props.loading ? (
         <PokeballLoader />
       ) : (
         <PokeInfo pokemon={props.pokemon} catchDate={props.catchDate} />
       )}
-    </Container>
+    </React.Fragment>
   );
 }
 

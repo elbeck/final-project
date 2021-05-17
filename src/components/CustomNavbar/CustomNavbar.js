@@ -26,7 +26,13 @@ function CustomNavbar() {
     );
   });
   return (
-    <Navbar bg="light" variant="dark" expand="lg" style={{ fontWeight: 500 }}>
+    <Navbar
+      className="fixed-top"
+      bg="light"
+      variant="dark"
+      expand="lg"
+      style={{ fontWeight: 500 }}
+    >
       <Navbar.Brand href="/">
         <img
           alt=""

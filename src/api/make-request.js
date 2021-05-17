@@ -11,9 +11,30 @@ export const getPokemonGroup = async (page) => {
       `${BASE_URL}/pokemons?_page=${page}&_limit=${CARDS_PER_PAGE}`
     );
     const links = parseLinkHeader(response.headers.link);
-    const nextPage = links?.next._page;
-    const lastPage = links?.last._page;
+    const nextPage = links?.next?._page;
+    const lastPage = links?.last?._page;
     return { data: response.data, nextPage, lastPage };
+  } catch (err) {
+    throw new Error(err);
+  }
+};
+
+export const getCollection = async (page, userId = USER_ID) => {
+  try {
+    const response = await axios.get(
+      `${BASE_URL}/users/${userId}/rels?_expand=pokemons&_page=${page}&_limit=${CARDS_PER_PAGE}`
+    );
+    let data = [];
+    let date = [];
+    response.data.forEach((item) => {
+      data.push(item.pokemons);
+      date.push(item.date);
+    });
+
+    const links = parseLinkHeader(response.headers.link);
+    const nextPage = links?.next?._page;
+    const lastPage = links?.last?._page;
+    return { data, date, nextPage, lastPage };
   } catch (err) {
     throw new Error(err);
   }
@@ -21,7 +42,9 @@ export const getPokemonGroup = async (page) => {
 
 export const getRels = async (userId = USER_ID) => {
   try {
+    console.log("request");
     const response = await axios.get(`${BASE_URL}/rels?usersId=${userId}`);
+    console.log("request", response.data);
     return response.data;
   } catch (err) {
     throw new Error(err);

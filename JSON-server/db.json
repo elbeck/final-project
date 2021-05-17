@@ -164,18 +164,6 @@
     },
     {
       "usersId": 1,
-      "pokemonsId": 33,
-      "date": "16.05.2021",
-      "id": 27
-    },
-    {
-      "usersId": 1,
-      "pokemonsId": 33,
-      "date": "16.05.2021",
-      "id": 28
-    },
-    {
-      "usersId": 1,
       "pokemonsId": 45,
       "date": "16.05.2021",
       "id": 29
@@ -185,6 +173,426 @@
       "pokemonsId": 4,
       "date": "16.05.2021",
       "id": 30
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 47,
+      "date": "16.05.2021",
+      "id": 31
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 35,
+      "date": "17.05.2021",
+      "id": 32
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 36,
+      "date": "17.05.2021",
+      "id": 33
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 72,
+      "date": "17.05.2021",
+      "id": 34
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 71,
+      "date": "17.05.2021",
+      "id": 35
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 68,
+      "date": "17.05.2021",
+      "id": 36
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 101,
+      "date": "17.05.2021",
+      "id": 37
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 104,
+      "date": "17.05.2021",
+      "id": 38
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 281,
+      "date": "17.05.2021",
+      "id": 39
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 282,
+      "date": "17.05.2021",
+      "id": 40
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 280,
+      "date": "17.05.2021",
+      "id": 41
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 88,
+      "date": "17.05.2021",
+      "id": 42
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 89,
+      "date": "17.05.2021",
+      "id": 43
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 90,
+      "date": "17.05.2021",
+      "id": 44
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 92,
+      "date": "17.05.2021",
+      "id": 45
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 320,
+      "date": "17.05.2021",
+      "id": 46
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 321,
+      "date": "17.05.2021",
+      "id": 47
+    },
+    {
+      "id": 48,
+      "usersId": 1,
+      "pokemonsId": 105,
+      "date": "17.05.2021"
+    },
+    {
+      "id": 49,
+      "usersId": 1,
+      "pokemonsId": 356,
+      "date": "17.05.2021"
+    },
+    {
+      "id": 50,
+      "usersId": 1,
+      "pokemonsId": 357,
+      "date": "17.05.2021"
+    },
+    {
+      "id": 51,
+      "usersId": 1,
+      "pokemonsId": 129,
+      "date": "17.05.2021"
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 78,
+      "date": "17.05.2021",
+      "id": 52
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 189,
+      "date": "17.05.2021",
+      "id": 53
+    },
+    {
+      "id": 54,
+      "usersId": 1,
+      "pokemonsId": 177,
+      "date": "17.05.2021"
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 197,
+      "date": "17.05.2021",
+      "id": 55
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 230,
+      "date": "17.05.2021",
+      "id": 56
+    },
+    {
+      "id": 57,
+      "usersId": 1,
+      "pokemonsId": 219,
+      "date": "17.05.2021"
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 123,
+      "date": "17.05.2021",
+      "id": 58
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 93,
+      "date": "17.05.2021",
+      "id": 59
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 153,
+      "date": "17.05.2021",
+      "id": 60
+    },
+    {
+      "id": 61,
+      "usersId": 1,
+      "pokemonsId": 237,
+      "date": "17.05.2021"
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 138,
+      "date": "17.05.2021",
+      "id": 62
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 69,
+      "date": "17.05.2021",
+      "id": 63
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 156,
+      "date": "17.05.2021",
+      "id": 64
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 150,
+      "date": "17.05.2021",
+      "id": 65
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 96,
+      "date": "17.05.2021",
+      "id": 66
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 132,
+      "date": "17.05.2021",
+      "id": 67
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 159,
+      "date": "17.05.2021",
+      "id": 68
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 81,
+      "date": "17.05.2021",
+      "id": 69
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 26,
+      "date": "17.05.2021",
+      "id": 70
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 99,
+      "date": "17.05.2021",
+      "id": 71
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 97,
+      "date": "17.05.2021",
+      "id": 72
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 98,
+      "date": "17.05.2021",
+      "id": 73
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 57,
+      "date": "17.05.2021",
+      "id": 74
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 126,
+      "date": "17.05.2021",
+      "id": 75
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 48,
+      "date": "17.05.2021",
+      "id": 76
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 142,
+      "date": "17.05.2021",
+      "id": 77
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 143,
+      "date": "17.05.2021",
+      "id": 78
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 144,
+      "date": "17.05.2021",
+      "id": 79
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 141,
+      "date": "17.05.2021",
+      "id": 80
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 44,
+      "date": "17.05.2021",
+      "id": 81
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 42,
+      "date": "17.05.2021",
+      "id": 82
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 53,
+      "date": "17.05.2021",
+      "id": 83
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 52,
+      "date": "17.05.2021",
+      "id": 84
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 39,
+      "date": "17.05.2021",
+      "id": 85
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 91,
+      "date": "17.05.2021",
+      "id": 86
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 149,
+      "date": "17.05.2021",
+      "id": 87
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 110,
+      "date": "17.05.2021",
+      "id": 88
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 146,
+      "date": "17.05.2021",
+      "id": 89
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 147,
+      "date": "17.05.2021",
+      "id": 90
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 139,
+      "date": "17.05.2021",
+      "id": 91
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 216,
+      "date": "17.05.2021",
+      "id": 92
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 87,
+      "date": "17.05.2021",
+      "id": 93
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 86,
+      "date": "17.05.2021",
+      "id": 94
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 85,
+      "date": "17.05.2021",
+      "id": 95
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 51,
+      "date": "17.05.2021",
+      "id": 96
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 41,
+      "date": "17.05.2021",
+      "id": 97
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 75,
+      "date": "17.05.2021",
+      "id": 98
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 135,
+      "date": "17.05.2021",
+      "id": 99
+    },
+    {
+      "usersId": 1,
+      "pokemonsId": 134,
+      "date": "17.05.2021",
+      "id": 100
     }
   ],
   "pokemons": [

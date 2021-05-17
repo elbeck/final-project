@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import { Container } from "react-bootstrap";
 import { connect } from "react-redux";
 import PokeCardDesk from "components/PokeCardDesk/PokeCardDesk";
@@ -10,8 +10,6 @@ import {
 } from "store/actions/pokemonGroupAction";
 
 function HomePage(props) {
-  const rtf = useRef(true);
-
   useEffect(() => {
     if (props.hasMore) {
       document.addEventListener("scroll", scrollHandler);
@@ -23,10 +21,8 @@ function HomePage(props) {
   }, [props.page]);
 
   useEffect(() => {
-    console.log("useEffect RTF", props.readyToFetch);
-    console.log("useEffect rtf", rtf);
-    if (props.readyToFetch) {
-      rtf.current = false;
+    console.log(props.page);
+    if (props.readyToFetch && props.page === 1) {
       props.setReadyToFetch(false);
       props.fetchPokemonGroup();
     }
@@ -40,10 +36,9 @@ function HomePage(props) {
       window.innerHeight / 2
     ) {
       document.removeEventListener("scroll", scrollHandler);
-      console.log("scroll RTF", props.readyToFetch);
-      console.log("scroll rtf", rtf);
-      rtf.current = true;
-      props.setReadyToFetch(true);
+      console.log("hey");
+      props.fetchPokemonGroup();
+      // props.setReadyToFetch(true);
     }
   };
 
@@ -90,3 +85,90 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
+
+// import React from "react";
+// import { useEffect, useRef } from "react";
+// import { Container } from "react-bootstrap";
+// import { connect } from "react-redux";
+// import PokeCardDesk from "components/PokeCardDesk/PokeCardDesk";
+// import {
+//   fetchPokemonGroup,
+//   addPokemonGroup,
+//   addToCollection,
+//   setReadyToFetch,
+// } from "store/actions/pokemonGroupAction";
+
+// function HomePage(props) {
+//   useEffect(() => {
+//     if (props.nextPage) {
+//       document.addEventListener("scroll", scrollHandler);
+//       return () => {
+//         document.removeEventListener("scroll", scrollHandler);
+//       };
+//     }
+//     // eslint-disable-next-line
+//   }, [props.nextPage]);
+
+//   useEffect(() => {
+//     if (props.readyToFetch) {
+//       props.setReadyToFetch(false);
+//       props.addPokemonGroup();
+//     }
+//     // eslint-disable-next-line
+//   }, [props.readyToFetch]);
+
+//   const scrollHandler = (e) => {
+//     if (
+//       e.target.documentElement.scrollHeight -
+//         (window.pageYOffset + window.innerHeight) <=
+//       window.innerHeight / 2
+//     ) {
+//       document.removeEventListener("scroll", scrollHandler);
+//       props.setReadyToFetch(true);
+//       // props.addPokemonGroup();
+//     }
+//   };
+
+//   return (
+//     <React.Fragment>
+//       <PokeCardDesk
+//         pokemonGroup={props.pokemonGroup}
+//         catchInfo={props.catchInfo}
+//         handleBtnClick={props.addToCollection}
+//       />
+//       {props.loading && (
+//         <div className="m-4 text-center" style={{ fontSize: "1.5rem" }}>
+//           Loading...
+//         </div>
+//       )}
+//       {props.error && (
+//         <div className="m-4 text-center" style={{ fontSize: "1.5rem" }}>
+//           Error
+//         </div>
+//       )}
+//     </React.Fragment>
+//   );
+// }
+
+// function mapStateToProps(state) {
+//   return {
+//     pokemonGroup: state.pokemonGroup.pokemonGroup,
+//     catchInfo: state.pokemonGroup.catchDates,
+//     nextPage: state.pokemonGroup.nextPage,
+//     loading: state.pokemonGroup.loading,
+//     error: state.pokemonGroup.error,
+//     readyToFetch: state.pokemonGroup.readyToFetch,
+//   };
+// }
+
+// function mapDispatchToProps(dispatch) {
+//   return {
+//     setReadyToFetch: (bool) => dispatch(setReadyToFetch(bool)),
+//     fetchPokemonGroup: () => dispatch(fetchPokemonGroup()),
+//     addPokemonGroup: (page) => dispatch(addPokemonGroup(page)),
+//     addToCollection: (pokemonId, date) =>
+//       dispatch(addToCollection(pokemonId, date)),
+//   };
+// }
+
+// export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

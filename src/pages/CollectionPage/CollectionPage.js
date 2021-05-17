@@ -5,14 +5,13 @@ import { connect } from "react-redux";
 import PokeCardDesk from "components/PokeCardDesk/PokeCardDesk";
 import {
   fetchPokemonGroup,
-  setReadyToFetch,
-  addToCollection,
-} from "store/actions/pokemonGroupAction";
+  addPokemonGroup,
+} from "store/actions/collectionAction";
 
 function CollectionPage(props) {
-  const pokemonGroup = props.pokemonGroup.filter((pokemon) =>
-    props.catchInfo.hasOwnProperty(pokemon.id)
-  );
+  // const pokemonGroup = props.pokemonGroup.filter((pokemon) =>
+  //   props.catchInfo.hasOwnProperty(pokemon.id)
+  // );
 
   useEffect(() => {
     if (props.hasMore) {
@@ -22,15 +21,12 @@ function CollectionPage(props) {
       };
     }
     // eslint-disable-next-line
-  }, [props.page]);
+  }, [props.nextPage]);
 
   useEffect(() => {
-    if (props.readyToFetch) {
-      props.setReadyToFetch(false);
-      props.fetchPokemonGroup();
-    }
+    props.fetchPokemonGroup();
     // eslint-disable-next-line
-  }, [props.readyToFetch]);
+  }, []);
 
   const scrollHandler = (e) => {
     if (
@@ -39,16 +35,16 @@ function CollectionPage(props) {
       window.innerHeight / 2
     ) {
       document.removeEventListener("scroll", scrollHandler);
-      props.setReadyToFetch(true);
+      props.addPokemonGroup();
+      // props.setReadyToFetch(true);
     }
   };
 
   return (
-    <Container className="pt-4">
+    <React.Fragment>
       <PokeCardDesk
-        pokemonGroup={pokemonGroup}
+        pokemonGroup={props.pokemonGroup}
         catchInfo={props.catchInfo}
-        handleBtnClick={props.addToCollection}
       />
       {props.loading && (
         <div className="m-4 text-center" style={{ fontSize: "1.5rem" }}>
@@ -60,28 +56,25 @@ function CollectionPage(props) {
           {props.error.message}
         </div>
       )}
-    </Container>
+    </React.Fragment>
   );
 }
 
 function mapStateToProps(state) {
   return {
-    pokemonGroup: state.pokemonGroup.pokemonGroup,
-    catchInfo: state.pokemonGroup.catchDates,
-    page: state.pokemonGroup.page,
-    hasMore: state.pokemonGroup.hasMore,
-    readyToFetch: state.pokemonGroup.readyToFetch,
-    loading: state.pokemonGroup.loading,
-    error: state.pokemonGroup.error,
+    pokemonGroup: state.collection.pokemonGroup,
+    catchInfo: state.collection.catchDates,
+    nextPage: state.collection.nextPage,
+    hasMore: state.collection.hasMore,
+    loading: state.collection.loading,
+    error: state.collection.error,
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    setReadyToFetch: (bool) => dispatch(setReadyToFetch(bool)),
     fetchPokemonGroup: () => dispatch(fetchPokemonGroup()),
-    addToCollection: (pokemonId, date) =>
-      dispatch(addToCollection(pokemonId, date)),
+    addPokemonGroup: () => dispatch(addPokemonGroup()),
   };
 }
 
