@@ -2,9 +2,9 @@ import {
   FETCH_COLLECTION_START,
   FETCH_COLLECTION_SUCCESS,
   FETCH_COLLECTION_ERROR,
-  ADD_COLLECTION_SUCCESS,
+  RESET_COLLECTION,
 } from "store/constants/action-types";
-import { getCollection, getRels, addRel } from "api/make-request";
+import { getCollection } from "api/make-request";
 
 //=============================================================================================================
 
@@ -28,73 +28,33 @@ export function fetchPokemonGroupError(error) {
   };
 }
 
-export function addPokemonGroupSuccess(payload) {
+export function resetCollection() {
   return {
-    type: ADD_COLLECTION_SUCCESS,
-    payload,
+    type: RESET_COLLECTION,
   };
 }
-
 //=============================================================================================================
 
 export function fetchPokemonGroup() {
-  return async (dispatch) => {
+  return async (dispatch, getState) => {
     try {
       dispatch(fetchPokemonGroupStart());
-      const page = 1;
+      const page = getState().collection.nextPage;
       const {
         data: pokemonGroup,
         nextPage,
-        date: catchDates,
+        lastPage,
+        date,
       } = await getCollection(page);
 
       dispatch(
         fetchPokemonGroupSuccess({
           pokemonGroup,
           nextPage,
-          catchDates,
+          lastPage,
+          catchDates: date,
         })
       );
-    } catch (err) {
-      dispatch(fetchPokemonGroupError(err));
-    }
-  };
-}
-
-export function addPokemonGroup() {
-  return async (dispatch, getState) => {
-    try {
-      dispatch(fetchPokemonGroupStart());
-
-      const page = getState().pokemonGroup.nextPage;
-      const { data: pokemonGroup, nextPage } = await getCollection(page);
-
-      const rels = await getRels();
-      const catchDates = rels.reduce((obj, rel) => {
-        const pokemonId = Number(rel.pokemonsId);
-        obj[pokemonId] = rel.date;
-        return obj;
-      }, {});
-
-      dispatch(
-        addPokemonGroupSuccess({
-          pokemonGroup,
-          nextPage,
-          catchDates,
-        })
-      );
-    } catch (err) {
-      dispatch(fetchPokemonGroupError(err));
-    }
-  };
-}
-
-export function addToCollection(pokemonId, catchDate) {
-  return async (dispatch) => {
-    try {
-      // dispatch(fetchPokemonGroupStart());
-      await addRel({ pokemonId, catchDate });
-      dispatch(fetchPokemonGroup());
     } catch (err) {
       dispatch(fetchPokemonGroupError(err));
     }

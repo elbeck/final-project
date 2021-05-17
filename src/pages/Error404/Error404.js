@@ -1,6 +1,5 @@
 import React from "react";
 import img from "public/not-found.png";
-import { Container } from "react-bootstrap";
 
 function Error404() {
   return (

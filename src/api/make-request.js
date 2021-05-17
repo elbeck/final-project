@@ -25,10 +25,10 @@ export const getCollection = async (page, userId = USER_ID) => {
       `${BASE_URL}/users/${userId}/rels?_expand=pokemons&_page=${page}&_limit=${CARDS_PER_PAGE}`
     );
     let data = [];
-    let date = [];
+    let date = {};
     response.data.forEach((item) => {
       data.push(item.pokemons);
-      date.push(item.date);
+      date[item.pokemons.id] = item.date;
     });
 
     const links = parseLinkHeader(response.headers.link);
@@ -42,9 +42,7 @@ export const getCollection = async (page, userId = USER_ID) => {
 
 export const getRels = async (userId = USER_ID) => {
   try {
-    console.log("request");
     const response = await axios.get(`${BASE_URL}/rels?usersId=${userId}`);
-    console.log("request", response.data);
     return response.data;
   } catch (err) {
     throw new Error(err);

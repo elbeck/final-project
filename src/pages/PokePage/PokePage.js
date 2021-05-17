@@ -1,6 +1,4 @@
 import React, { useEffect } from "react";
-import { Container } from "react-bootstrap";
-import styles from "./PokePage.module.scss";
 import { connect } from "react-redux";
 import PokeballLoader from "components/PokeballLoader/PokeballLoader";
 import PokeInfo from "components/PokeInfo/PokeInfo";
@@ -8,8 +6,6 @@ import { fetchPokemonById } from "store/actions/pokemonAction";
 import { useParams } from "react-router-dom";
 
 function PokePage(props) {
-  // const location = useLocation();
-  // const currentId = currentLocation.pathname.split('/'.pop())
   const { id } = useParams();
   useEffect(() => {
     props.fetchPokemonById(id);
@@ -18,10 +14,14 @@ function PokePage(props) {
 
   return (
     <React.Fragment>
-      {props.loading ? (
+      {props.loading || !props.pokemon ? (
         <PokeballLoader />
       ) : (
-        <PokeInfo pokemon={props.pokemon} catchDate={props.catchDate} />
+        <PokeInfo
+          name={props.pokemon.name}
+          id={props.pokemon.id}
+          catchDate={props.catchDate}
+        />
       )}
     </React.Fragment>
   );

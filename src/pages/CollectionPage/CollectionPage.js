@@ -1,42 +1,37 @@
 import React from "react";
 import { useEffect } from "react";
-import { Container } from "react-bootstrap";
 import { connect } from "react-redux";
 import PokeCardDesk from "components/PokeCardDesk/PokeCardDesk";
-import {
-  fetchPokemonGroup,
-  addPokemonGroup,
-} from "store/actions/collectionAction";
+import { fetchPokemonGroup } from "store/actions/collectionAction";
+import { resetPokemonGroup } from "store/actions/pokemonGroupAction";
 
 function CollectionPage(props) {
-  // const pokemonGroup = props.pokemonGroup.filter((pokemon) =>
-  //   props.catchInfo.hasOwnProperty(pokemon.id)
-  // );
-
   useEffect(() => {
     if (props.hasMore) {
-      document.addEventListener("scroll", scrollHandler);
+      document.addEventListener("scroll", scrollHandle);
       return () => {
-        document.removeEventListener("scroll", scrollHandler);
+        document.removeEventListener("scroll", scrollHandle);
       };
     }
     // eslint-disable-next-line
   }, [props.nextPage]);
 
   useEffect(() => {
-    props.fetchPokemonGroup();
+    props.reset();
+    if (props.pokemonGroup.length === 0) {
+      props.fetchPokemonGroup();
+    }
     // eslint-disable-next-line
   }, []);
 
-  const scrollHandler = (e) => {
+  const scrollHandle = (e) => {
     if (
       e.target.documentElement.scrollHeight -
         (window.pageYOffset + window.innerHeight) <=
       window.innerHeight / 2
     ) {
-      document.removeEventListener("scroll", scrollHandler);
-      props.addPokemonGroup();
-      // props.setReadyToFetch(true);
+      document.removeEventListener("scroll", scrollHandle);
+      props.fetchPokemonGroup();
     }
   };
 
@@ -74,7 +69,7 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     fetchPokemonGroup: () => dispatch(fetchPokemonGroup()),
-    addPokemonGroup: () => dispatch(addPokemonGroup()),
+    reset: () => dispatch(resetPokemonGroup()),
   };
 }
 

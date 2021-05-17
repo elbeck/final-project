@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { Navbar, Nav } from "react-bootstrap";
 import logo from "public/logo.svg";
 import routeMap from "route-map/route-map";
 import { LinkContainer } from "react-router-bootstrap";
+import { withRouter } from "react-router-dom";
 
-function CustomNavbar() {
+function CustomNavbar(props) {
+  const [navExpanded, setNavExpanded] = useState(false);
+
   const links = [
     {
       to: routeMap.home.path,
@@ -18,15 +21,25 @@ function CustomNavbar() {
     },
   ];
 
+  const clickHandler = (e) => {
+    if (e.target.classList.contains("nav-link")) {
+      setNavExpanded(false);
+    }
+  };
+
   let navLinks = links.map((link) => {
     return (
       <LinkContainer key={link.title} to={link.to} exact={link.exact}>
-        <Nav.Link href={link.to}>{link.title}</Nav.Link>
+        <Nav.Link>{link.title}</Nav.Link>
       </LinkContainer>
     );
   });
+  const { location } = props;
   return (
     <Navbar
+      onToggle={(bool) => setNavExpanded(bool)}
+      expanded={navExpanded}
+      onClick={clickHandler}
       className="fixed-top"
       bg="light"
       variant="dark"
@@ -43,14 +56,12 @@ function CustomNavbar() {
       </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto">{navLinks}</Nav>
-        {/* <Form inline>
-          <FormControl type="text" placeholder="Search" className="mr-sm-2" />
-          <Button variant="outline-white">Search</Button>
-        </Form> */}
+        <Nav activeKey={location.pathname} className="mr-auto">
+          {navLinks}
+        </Nav>
       </Navbar.Collapse>
     </Navbar>
   );
 }
 
-export default CustomNavbar;
+export default withRouter(CustomNavbar);

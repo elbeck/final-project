@@ -1,5 +1,6 @@
 import React from "react";
 import PokeCard from "components/PokeCard/PokeCard";
+import PropTypes from "prop-types";
 
 function PokeCardDesk(props) {
   const pokemonCards = props.pokemonGroup.map((pokemon) => {
@@ -10,7 +11,6 @@ function PokeCardDesk(props) {
         className="m-2"
         name={pokemon.name}
         id={pokemon.id}
-        imgPath={`pokemons/${pokemon.id}.png`}
         isPokemonCaught={isPokemonCaught}
         handleBtnClick={(date) => {
           props.handleBtnClick(pokemon.id, date);
@@ -27,5 +27,15 @@ function PokeCardDesk(props) {
     </div>
   );
 }
+
+PokeCardDesk.propTypes = {
+  pokemonGroup: PropTypes.arrayOf(PropTypes.object).isRequired,
+  catchInfo: PropTypes.object.isRequired,
+  handleBtnClick: PropTypes.func,
+};
+
+PokeCardDesk.defaultProps = {
+  handleBtnClick: () => {},
+};
 
 export default PokeCardDesk;

@@ -2,8 +2,9 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import routeMap from "route-map/route-map";
 import styles from "./PokeCard.module.scss";
-import capitalizeFirstLetter from "helpers/capitalize-first-letter";
+import { capitalizeFirstLetter } from "helpers/func-helpers";
 import unknownPokemonImg from "public/Unknown-pokemon.png";
+import PropTypes from "prop-types";
 
 function PokeCard(props) {
   const location = useLocation();
@@ -37,14 +38,7 @@ function PokeCard(props) {
   function handleBtnClick(e) {
     e.preventDefault();
     e.target.disabled = true;
-
-    const date = new Date().toLocaleDateString(undefined, {
-      year: "numeric",
-      month: "numeric",
-      day: "numeric",
-    });
-
-    props.handleBtnClick(date);
+    props.handleBtnClick(new Date());
   }
 
   return (
@@ -63,10 +57,27 @@ function PokeCard(props) {
         )}
       </div>
       <div className={styles.right}>
-        <img onError={addDefaultSrc} src={props.imgPath} alt="pokemon" />
+        <img
+          onError={addDefaultSrc}
+          src={`pokemons/${props.id}.png`}
+          alt="pokemon"
+        />
       </div>
     </Link>
   );
 }
+
+PokeCard.propTypes = {
+  name: PropTypes.string.isRequired,
+  isPokemonCaught: PropTypes.bool.isRequired,
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  handleBtnClick: PropTypes.func,
+  className: PropTypes.string,
+};
+
+PokeCard.defaultProps = {
+  className: "",
+  handleBtnClick: () => {},
+};
 
 export default PokeCard;
